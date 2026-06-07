@@ -22,22 +22,22 @@ app.get('/', (req, res) => {
 
 app.get('/productos', (req, res) => {
   const { categoria } = req.query;
-  
+
   if (categoria) {
-    const filtrados = productos.filter(p => p.categoria === categoria);
+    const filtrados = productos.filter((p) => p.categoria === categoria);
     return res.json(filtrados);
   }
-  
+
   return res.json(productos);
 });
 
 app.get('/usuarios/:id', (req, res) => {
-  const usuario = usuarios.find(u => u.id === parseInt(req.params.id, 10)); 
-  
+  const usuario = usuarios.find((u) => u.id === parseInt(req.params.id, 10));
+
   if (!usuario) {
-    return res.status(404).send('Usuario no encontrado.'); 
+    return res.status(404).send('Usuario no encontrado.');
   }
-  
+
   return res.json(usuario);
 });
 
